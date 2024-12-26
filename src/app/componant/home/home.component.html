@@ -1,0 +1,136 @@
+<div class="container py-3">
+
+  <div class="p-4 mt-1 card justify-content-center main">
+
+    <h6 class="text-white text-center text-lg title">User Registration Add Data</h6>
+
+    <form [formGroup]="user_Form">
+
+      <div class="row g-3">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text"  class="form-control" formControlName="fullName" placeholder="Enter Your Name" />
+          <div *ngIf="user_Form.get('fullName')?.invalid && user_Form.get('fullName')?.touched" class="text-danger">
+            Full Name is required and must be at least 3 characters long.
+          </div>
+
+        </div>
+        <div class="col-md-6 mb-3">
+          <label  class="form-label">Email</label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email" />
+          <div *ngIf="user_Form.get('email')?.invalid && user_Form.get('email')?.touched" class="text-danger">
+            A valid email is required.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+
+          
+          <label class="form-label">Password</label>
+          <div class="d-flex align-items-center justify-content-center">
+          <input [type]="showPassword ? 'text' : 'password'"  class="form-control" formControlName="password" placeholder="Enter Your Password"/>  <span>  <button type="button" style="color: white;" class="btn btn-outline-primary" (click)="togglePasswordVisibility()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button></span>
+        </div>
+          <div *ngIf="user_Form.get('password')?.invalid && user_Form.get('password')?.touched" class="text-danger">
+            Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter,
+            one digit, and one special character.
+          </div>
+
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Confirm Password</label>
+          <div class="d-flex align-items-center justify-content-center">
+       
+          <input [type]="showPassword ? 'text' : 'password'"  class="form-control" placeholder="Enter Your Conform Password" formControlName="confirmPassword" [class.is-invalid]="user_Form.get('confirmPassword')?.invalid && user_Form.get('confirmPassword')?.touched"
+          />   <span>  <button type="button" style="color: white;" class="btn btn-outline-primary" (click)="togglePasswordVisibility()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button></span>
+          </div>
+
+          <div class="invalid-feedback" *ngIf="user_Form.get('confirmPassword')?.errors?.['required']">
+            Confirm Password is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="user_Form.errors?.['passwordMismatch']">
+            Password and Confirm Password must match.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+
+        <div class="col-md-6 mb-3">
+          <label class="text-white">Date of Birth</label>
+          <input type="date" class="form-control" formControlName="dateOfBirth" />
+          <div *ngIf="user_Form.get('dateOfBirth')?.invalid && user_Form.get('dateOfBirth')?.touched" class="text-danger">
+            Date of Birth is required.
+          </div>
+        </div>
+
+
+        <div class="col-md-6 mb-3 d-flex align-items-center justify-content-center">
+          <div class="mt-4 me-3"><button class="btn btn-success" [disabled]="user_Form.invalid"
+              (click)="Onsave()">Submit</button>
+          </div>
+          <div class="mt-4 me-3"><button class="btn  btn-info" (click)="Onreset()">Reset</button></div>
+          <div class="mt-4 me-3"><button class="btn  btn-secondary" (click)="  updateData(userData)">updateData</button></div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+<div class="container py-3">
+  <h5 class="text-center mb-3 " > User Data Show Table</h5>
+  <div class=" card table-responsive justify-content-center table">
+    <table class="table table-responsive ">
+      <tr>
+        <th>Sr.No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Conform Password</th>
+        <th>Date Of Birth </th>
+        <th>Action</th>
+
+      </tr>
+
+      <tr *ngFor="let user of userData let i=index">
+        <td> {{i+1}} </td>
+        <td> {{user.fullName}} </td>
+        <td> {{user.email}} </td>
+        <td> {{user.password}} </td>
+        <td> {{user.confirmPassword}} </td>
+        <td> {{user.dateOfBirth}} </td>
+
+        <td> <Button class="btn btn-primary me-3" (click)="editepmData(user)"><i class="fa-solid fa-pen-to-square"></i></Button> <button class="btn btn-danger ml-3"
+            (click)="deleteData(user)"><i class="fa-duotone fa-solid fa-trash"></i></button> </td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

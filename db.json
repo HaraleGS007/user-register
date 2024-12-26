@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": "be85",
+      "fullName": "Ganesh HARALE",
+      "email": "H@gmail.com",
+      "password": "Ganesh1234@",
+      "confirmPassword": "Ganesh1234@",
+      "dateOfBirth": "2024-12-06"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -1,0 +1,23 @@
+
+table , th, tr, td {
+    border: 1px solid rgb(235, 233, 233);
+}
+
+.main{
+    background-color: rgb(69, 142, 176);
+}
+.title{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
+form label {
+    display: block;
+    color: white;
+    
+}
+.table{
+    background-color: rgba(197, 204, 206, 0.704);
+}
